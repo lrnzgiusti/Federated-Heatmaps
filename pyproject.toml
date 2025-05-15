@@ -1,0 +1,91 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "federated_heatmaps"
+description = "Python implementation of Towards Sparse Federated Analytics: Location Heatmaps under Distributed Differential Privacy with Secure Aggregation (https://arxiv.org/abs/2111.02356)"
+readme = "README.md"
+requires-python =">=3.11"
+dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "dvc[ssh]",
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "pytest-mock",
+  "ruff",
+]
+
+[tool.hatch.version]
+path = "src/federated_heatmaps/__init__.py"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [  # See https://docs.astral.sh/ruff/rules/
+  "F",  # flake8 (pyflakes)
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "I",  # isort
+  "N",  # pep8-naming
+  "D",  # flake8-docstrings (pydocstyle)
+  "UP",  # pyupgrade
+  "S",  # flake8-bandit
+  "BLE",  # flake8-blind-except
+  "FBT",  # flake8-boolean-trap
+  "B",  # flake8-bugbear
+  "A",  # flake8-builtins
+  "C4",  # flake8-comprehensions
+  "DTZ",  # flake8-datetimez
+  "T10",  # flake8-debugger (to remove breakpoint())
+  "EM",  # flake8-errmsg
+  "G",  # flake8-logging-format
+  "INP",  # flake8-no-pep420
+  "PIE",  # flake8-pie
+  "PT",  # flake8-pytest-style
+  "Q",  # flake8-quotes
+  "RSE",  # flake8-raise (to remove unused parethesis in raise)
+  "RET",  # flake8-return
+  "SLF",  # flake8-self
+  "SLOT",  # flake8-slots (enforce __slots__ for some subclasses)
+  "SIM",  # flake8-simplify
+  "TID",  # flask8-tidy-imports
+  "TCH",  # flake8-type-checking
+  "PTH",  # flake8-use-pathlib
+  "PGH",  # pygrep-hooks (mostly to check for invalid-mock-access)
+  "TRY",  # tryceratops
+  "NPY",  # numpy-specific rules
+  "PERF",  # perflint
+  "LOG",  # flake8-logging
+  "RUF",  # ruff-specific rules
+]
+pydocstyle.convention = "numpy"
+flake8-pytest-style.fixture-parentheses = false
+flake8-pytest-style.mark-parentheses = false
+per-file-ignores."tests/**/*.py" = ["S101", "SLF", "INP"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+no_implicit_optional = true
+check_untyped_defs = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = [
+    "tests",
+]
+addopts = "--cov=src/ -v --cov-report=term-missing --durations=20 --no-cov-on-fail"

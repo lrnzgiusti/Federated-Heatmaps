@@ -1,0 +1,24 @@
+# config.yaml
+
+privacy:
+  eps_total: 16.0
+  delta_drop: 0.05
+
+secagg:
+  S_max: 1000
+  m: 65536
+
+algorithm:
+  U_alg1: 1000
+  c_alg2: 0.1
+  b_alg2: 2.0
+
+tree:
+  max_depth: 7
+  grid_width: 1024
+  grid_height: 1024
+
+multi_loc:
+  gamma_scaling: 100.0
+
+verbose: true
