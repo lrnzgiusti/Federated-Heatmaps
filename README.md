@@ -6,6 +6,11 @@
 </p>
 
 This repository re-implements the methods from **“Towards Sparse Federated Analytics: Location Heatmaps under Distributed Differential Privacy with Secure Aggregation”** (Bagdasaryan *et al.* 2022).
+      
+<div style="text-align: center;">
+  ![a](examples/1747381817421.jpg)
+</div>
+
 
 ---
 
